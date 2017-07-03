@@ -1,0 +1,39 @@
+<div>
+  {{errorMessage}}
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>{{pageTitle}}</h4>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-primary" (click)="create()">Add new course</button>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr class="table-heading">
+              <td>CourseNo</td>
+              <td>Title</td>
+              <td>Duration</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of courses" (click)="getCourse(course.id)">
+              <td>{{course.courseNumber}}</td>
+              <td>{{course.title}}</td>
+              <td>{{course.duration}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="delete(course); $event.stopPropagation()">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

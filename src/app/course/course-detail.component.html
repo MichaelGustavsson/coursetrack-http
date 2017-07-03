@@ -1,0 +1,63 @@
+<div *ngIf="course">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="clearfix">
+      <div class="pull-left">
+        <h4>Edit course details for {{course.title}}</h4>
+      </div>
+      <div class="pull-right">
+        <button class="btn btn-warning" (click)="goBack()">Back</button>
+      </div>
+    </div>
+
+
+    </div>
+    <div class="panel-body">
+      <div>
+        <form [formGroup]="courseForm" (ngSubmit)="save()" novalidate>
+          <div class="row">
+            <div class="col-md-6">
+              <button type="submit" class="btn btn-primary" [disabled]="courseForm.pristine || courseForm.invalid">Save</button>
+              <button class="btn btn-warning" [disabled]="courseForm.pristine || courseForm.invalid" (click)="cancel()">Cancel</button>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="courseNumber">Coursenumber</label>
+                <input type="text" formControlName="courseNumber" class="form-control" id="courseNumber" placeholder="Course number">
+                <div *ngIf="formErrors.courseNumber" class="alert alert-danger">
+                  {{formErrors.courseNumber}}
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="courseTitle">Course title</label>
+                <input type="text" formControlName="title" class="form-control" id="courseTitle" placeholder="Course title">
+                <div *ngIf="formErrors.title" class="alert alert-danger">
+                  {{formErrors.title}}
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="courseDuration">Duration</label>
+                <input type="number" formControlName="duration" class="form-control" id="courseDuration" placeholder="Course duration">
+                <div *ngIf="formErrors.duration" class="alert alert-danger">
+                  {{formErrors.duration}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="courseDescription">Course description</label>
+                <textarea formControlName="description" rows="9" class="form-control" id="courseDescription" placeholder="Course description"></textarea>
+                <div *ngIf="formErrors.description" class="alert alert-danger">
+                  {{formErrors.description}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
